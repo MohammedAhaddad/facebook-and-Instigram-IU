@@ -8,10 +8,21 @@ class Facebook extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            print("Add Post!");
+          },
+          backgroundColor: const Color(0xcc3c5a99),
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
+            size: 35,
+          ),
+        ),
         appBar: AppBar(
           title: const Text("Facebook"),
         ),
-        body: ListView(
+        body: Column(
           children: [
             SizedBox(
               child: Row(children: [
@@ -67,26 +78,33 @@ class Facebook extends StatelessWidget {
               ),
             ),
             SizedBox(
-                height: 200,
-                child: Container(
-                  child: ListView(children: [Story()]),
-                )),
-            SizedBox(
-              height: 400,
-              child: Container(
-                child: ListView.builder(
-                    // shrinkWrap: true,
-                    // physics: NeverScrollableScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    itemCount: post.length,
-                    itemBuilder: (context, index) {
-                      return FacebookPostWidget(
-                          Facbookpost[index].user!, Facbookpost[index].post!);
-                    }),
+              height: 500,
+              child: ListView(
+                children: [
+                  //error
+
+                  SizedBox(height: 200, child: Container(child: Story())),
+                  SizedBox(
+                    child: Container(
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          itemCount: post.length,
+                          itemBuilder: (context, index) {
+                            return FacebookPostWidget(Facbookpost[index].user!,
+                                Facbookpost[index].post!);
+                          }),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
-        ),
+        )
+
+        //error
+        ,
         bottomNavigationBar: Container(
             child: Row(
           children: [
