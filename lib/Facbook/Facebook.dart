@@ -77,8 +77,8 @@ class Facebook extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 500,
+            Expanded(
+              //  height: 600,
               child: ListView(
                 children: [
                   //error
